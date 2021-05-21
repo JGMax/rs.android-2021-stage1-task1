@@ -5,12 +5,12 @@ class StringParser {
     fun getResult(inputString: String): Array<String> {
         val closeBrackets = mapOf('(' to ')', '[' to ']', '<' to '>')
         val ans = arrayListOf<String>()
-        val openBrackets = mutableMapOf('(' to 0, '[' to 0, '<' to 0)
+        val openBrackets = setOf('(', '[', '<')
         val creatingStrings = arrayListOf<String>()
 
         inputString.forEach {
             when (it) {
-                in openBrackets.keys -> {
+                in openBrackets -> {
                     for (i in 0 until creatingStrings.size) {
                         var s = creatingStrings[i]
                         s += it
